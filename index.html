@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card card__one">
+            <div class="card__wrapper">
+                <div class="card__wrapper--top">
+                    <div class="card__top one">
+                        <img src="./images/one.jpg" alt="" class="card__img">
+                    </div>
+                </div>
+                <div class="card__bottom">
+                    <h1 class="card__text">Lorem ipsum dolor sit amet.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="card card__two">
+            <div class="card__wrapper">
+                <div class="card__top two">
+                    <img src="./images/two.jpg" alt="" class="card__img">
+                </div>
+                <div class="card__bottom">
+                    <h1 class="card__text">Lorem ipsum dolor sit amet.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="card card__three">
+            <div class="card__wrapper">
+                <div class="card__top three">
+                    <img src="./images/three.jpg" alt="" class="card__img">
+                </div>
+                <div class="card__bottom">
+                    <h1 class="card__text">Lorem ipsum dolor sit amet.</h1>
+                </div>
+            </div>
+        </div>
+
+        <button class="left">left</button>
+        <button class="right">right</button>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll(".card");
+        const left = document.querySelector(".left");
+        const right = document.querySelector(".right");
+
+        let curr = 0;
+
+        cards.forEach((card,index) => {
+            card.style.transform = `translate(-50%,-${50-(index*10)}%)`;
+            card.style.zIndex = `${cards.length-index}`;
+        })
+
+        right.addEventListener("click", () => {
+            curr ++;
+            console.log("curr",curr);
+
+            if(curr >= cards.length) {
+                curr = 0;
+                rightMovement();
+
+            } else {
+                rightMovement();
+            }
+            
+        })
+
+        left.addEventListener("click", () => {
+            curr --;
+            console.log(curr);
+            if(curr < 0 ) {
+                curr = cards.length-1;
+                leftMovement();
+            } else {
+                leftMovement();
+            }         
+        })
+
+        function leftMovement() {
+            let firstElementTransformProperty = `${cards[0].style.transform}`;
+            let firstElementZindexProperty = `${cards[0].style.zIndex}`;
+            console.log("bbb",firstElementZindexProperty);
+
+            for (let i = 0; i<cards.length; i++) {
+                let x = `${cards[i].style.transform}`;
+                if(i==cards.length-1) {
+                    console.log("aaa",firstElementTransformProperty);
+                    cards[i].style.transform = `${firstElementTransformProperty}`;
+                    cards[i].style.zIndex = `${firstElementZindexProperty}`;
+                } else {
+                    cards[i].style.transform = `${cards[i+1].style.transform}`;
+                    cards[i].style.zIndex = `${cards[i+1].style.zIndex}`;
+                }  
+            }
+        }
+
+        function rightMovement() {
+            let lastElementTransformProperty = `${cards[cards.length-1].style.transform}`;
+            let lastElementZindexProperty = `${cards[cards.length-1].style.zIndex}`;
+
+            for (let i = cards.length-1; i>=0; i--) {
+                let x = `${cards[i].style.transform}`;
+                if(i==0) {
+                    console.log("aaa",lastElementTransformProperty);
+                    cards[i].style.transform = `${lastElementTransformProperty}`;
+                    cards[i].style.zIndex = `${lastElementZindexProperty}`;
+                } else {
+                    cards[i].style.transform = `${cards[i-1].style.transform}`;
+                    cards[i].style.zIndex = `${cards[i-1].style.zIndex}`;
+                }      
+            }
+        }
+
+
+    </script>
+</body>
+</html>
