@@ -10,8 +10,8 @@
 }
 
 .card {
-    max-width: 320px;
-    
+    max-width: 500px;
+    width: 100%;
     border-radius: 20px;
     overflow: hidden;
     position: absolute;
@@ -54,7 +54,7 @@
 .one, .two, .three {
     position: relative;
     height: 0;
-    padding-bottom: 70%;
+    padding-bottom: 50%;
 }
 
 .card__img {

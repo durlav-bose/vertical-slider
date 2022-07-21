@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card__main">
+
+      <div class="card__wrapper">
+        <div class="card__img--main">
+          <img src="../images/one.jpg" alt="" class="card__img">
+        </div>
+        <div class="card__overlay--arrow">
+          <img src="../images/right-arrow (2).png" alt="" class="card__arrow">
+        </div>
+        <div class="card__overlay">
+          
+          <div class="card__overlay--texts">
+            <h1 class="text__name">Alexander</h1>
+            <p class="text__job">Developer</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card__wrapper">
+        <div class="card__img--main">
+          <img src="../images/two.jpg" alt="" class="card__img">
+        </div>
+        <div class="card__overlay--arrow">
+          <img src="../images/right-arrow (2).png" alt="" class="card__arrow">
+        </div>
+        <div class="card__overlay">
+          
+          <div class="card__overlay--texts">
+            <h1 class="text__name">Alexander</h1>
+            <p class="text__job">Developer</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card__wrapper">
+        <div class="card__img--main">
+          <img src="../images/three.jpg" alt="" class="card__img">
+        </div>
+        <div class="card__overlay--arrow">
+          <img src="../images/right-arrow (2).png" alt="" class="card__arrow">
+        </div>
+        <div class="card__overlay">
+          
+          <div class="card__overlay--texts">
+            <h1 class="text__name">Alexander</h1>
+            <p class="text__job">Developer</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <script>
+    let texts = document.querySelectorAll(".card__overlay--texts");
+    let cards = document.querySelectorAll(".card__wrapper");
+    let arrows = document.querySelectorAll(".card__overlay--arrow");
+
+    cards.forEach((card,index) => {
+      card.addEventListener("mouseover", () => {
+        texts[index].style.left = `20px`;
+        texts[index].style.opacity = `1`;
+        texts[index].style.transition = `all .5s ease-in-out .2s`;
+
+        arrows[index].style.right = `12px`;
+        arrows[index].style.opacity = `1`;
+        arrows[index].style.zIndex = `10`;
+        arrows[index].style.transition = `all .5s ease-in-out .2s`;
+      })
+
+      card.addEventListener("mouseleave", () => {
+        texts[index].style.left = `30px`;
+        texts[index].style.opacity = `0`;
+        texts[index].style.transition = `all .5s ease-in-out 0s`;
+
+        arrows[index].style.right = `20px`;
+        arrows[index].style.opacity = `0`;
+        arrows[index].style.transition = `all .5s ease-in-out 0s`;
+      })
+    })
+  </script>
+</body>
+</html>
